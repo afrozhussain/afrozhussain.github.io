@@ -28,6 +28,8 @@ navbar-links:
     - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
     - Learn markdown: "http://www.markdowntutorial.com/"
     - GitHub Pages: "https://pages.github.com/"
+  Tutorials: ""
+  Projects: ""
   Author's home: "http://www.afrozhussain.com"
 
 # Image to show in the navigation bar - image must be a square (width = height)
