@@ -9,11 +9,13 @@ You can write regular [markdown](http://markdowntutorial.com/) here and Jekyll w
 **Installing Hadoop is not much difficult if you properly focus and follow steps**.
 
 **Note:**
-* Everyline with '$' is a linux command
-* Every line starting with '#' represents comments or remarks
+* Everyline with `$` is a linux command
+* Every line starting with `#` represents comments or remarks
 * During installation keep internet connection open
 
 ## 1. Updating linux distribution and getting Java
+`$ sudo apt-get install update`
+`$ sudo apt-get install default-jdk`
 
 ```
 $ sudo apt-get install update
@@ -21,7 +23,7 @@ $ sudo apt-get install default-jdk
 ```
 
 ## 2. Creating a new user and usergroup (best practice)
-you can create user and group with any name that is suitable to you. Here, we have created user with name ***hduser*** and group with the name ***hadoop***
+you can create user and group with any name that is suitable to you. Here, we have created user with name `hduser` and group with the name `hadoop`
 ```
 $ sudo addgroup hadoop
 $ sudo adduser --ingroup hadoop hduser
@@ -29,6 +31,7 @@ $ sudo adduser hduser sudo
 ```
 
 ## 3. Getting ssh server and public key
+
 ```
 # get open ssh server
 $ sudo apt-get install openssh-server
@@ -56,6 +59,7 @@ open .bashrc file in gedit to add content
 $ sudo gedit ~/.bashrc
 ```
 add following content and save the file. Please write the name of java folder that you are using.
+
 ```
 # Java Configuration
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
