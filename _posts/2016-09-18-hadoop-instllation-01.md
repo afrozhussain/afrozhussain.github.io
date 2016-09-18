@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apache Hadoop Installation
+title: Apache Hadoop Installation (Single Node)
 subtitle: A Step by step tutorial
 ---
 
@@ -14,8 +14,6 @@ You can write regular [markdown](http://markdowntutorial.com/) here and Jekyll w
 * During installation keep internet connection open
 
 ## 1. Updating linux distribution and getting Java
-`$ sudo apt-get install update`
-`$ sudo apt-get install default-jdk`
 
 ```
 $ sudo apt-get install update
@@ -24,6 +22,7 @@ $ sudo apt-get install default-jdk
 
 ## 2. Creating a new user and usergroup (best practice)
 you can create user and group with any name that is suitable to you. Here, we have created user with name `hduser` and group with the name `hadoop`
+
 ```
 $ sudo addgroup hadoop
 $ sudo adduser --ingroup hadoop hduser
@@ -53,12 +52,15 @@ $ sudo mv hadoop-2.7.3 /usr/local/hadoop
 
 $ sudo chown -R hduser /usr/local
 ```
+
 ## 5. Setting environment
 open .bashrc file in gedit to add content
+
 ```
 $ sudo gedit ~/.bashrc
 ```
-add following content and save the file. Please write the name of java folder that you are using.
+
+Now, add following content and save the file. In case if you are not using `java-8`, please replace `java-8-openjdk-amd64` with the name of java folder that you have installed.
 
 ```
 # Java Configuration
@@ -77,3 +79,85 @@ export HADOOP_COMMIN_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 ```
 
+## 6. Hadoop configuration
+
+(i) - Edit File `core-site.xml` and add following content inside `<configuration>` ... `</configuration>` tags
+
+```
+<property>
+<name>fs.default.name</name>
+<value>hdfs://localhost:9000</value>
+</property>
+```
+
+(ii) - Edit File `hdfs-site.xml` and add following content inside `<configuration>` ...`</configuration>` tags.
+
+```
+<property>
+    <name>dfs.replication</name>
+    <value>4</value>
+</property>
+<property>
+        <name>dfs.namenode.name.dir</name>
+        <value> file:/usr/local/hadoop_store/hdfs/namenode </value>
+</property>
+<property>
+        <name>dfs.datanode.data.dir</name>
+        <value> file:/usr/local/hadoop_store/hdfs/datanode </value>
+</property>
+```
+(iii) - Edit File `yarn-site.xml` and add following content inside `<configuration>` ...`</configuration>` tags.
+```
+# linux command to open the file to edit
+$ sudo gedit yarn-site.xml
+```
+
+```
+<property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
+</property>
+<property>
+    <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+    <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+</property>
+```
+
+(iv) - Edit File `mapred-site.xml` and add following content inside `<configuration>` ...`</configuration>` tags.
+
+```
+$ cp mapred-site.xml.template mapred-site.xml
+$ sudo gedit mapred_site.xml
+```
+
+```
+<property>
+    <name>mapred.job.tracker</name>
+    <value>localhost:9001</value>
+</property>
+<property>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+</property>
+```
+
+(v) - Edit file `hadoop-env.sh` and locate for the line `export JAVA_HOME=${JAVA_HOME}` and change it with right java home path like in our case it will be `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64` 
+
+## 7. Format the Hadoop file system
+To format the file system run following command. This will initialize the hadoop file system.
+
+```
+$ hdfs namenode -format
+```
+## 8. Running 'Single Node' cluster
+
+```
+$ start-dfs.sh
+$ start-yarn.sh
+$ jps
+```
+
+## 9. See the status on Web Interface
+
+* goto `http://ipaddress:8088` to see Main Cluster
+* goto `http://ipaddress:50070` to see detailed status
