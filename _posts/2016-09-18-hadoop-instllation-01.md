@@ -4,9 +4,9 @@ title: Apache Hadoop Installation (Single Node)
 subtitle: A Step by step tutorial
 ---
 
-You can write regular [markdown](http://markdowntutorial.com/) here and Jekyll will automatically convert it to a nice webpage.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](http://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
-**Installing Hadoop is not much difficult if you properly focus and follow steps**.
+If you are new to Hadoop and getting curious that how to install Hadoop from scratch then this tutorial will help you to understand the setup process. By following these steps you can setup and run your single hadoop cluster. 
+
 
 **Note:**
 * Everyline with `$` is a linux command
@@ -54,7 +54,7 @@ $ sudo chown -R hduser /usr/local
 ```
 
 ## 5. Setting environment
-open .bashrc file in gedit to add content
+open `.bashrc` file in gedit to add content
 
 ```
 $ sudo gedit ~/.bashrc
@@ -91,6 +91,16 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 ```
 
 (ii) - Edit File `hdfs-site.xml` and add following content inside `<configuration>` ...`</configuration>` tags.
+
+The `hdfs-site.xml` is used to specify the namenode and datanode directories. Before modifying this file, we create the namenode and datanode directories. You can create folder with any name in our case we named it `hadoop_store`.
+
+```
+$ sudo mkdir -p /usr/local/hadoop_store/hdfs/namenode
+$ sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
+
+# grant access to hduser to the folder.
+$ sudo chown -R hduser /usr/local/hadoop_store
+```
 
 ```
 <property>
@@ -144,6 +154,7 @@ $ sudo gedit mapred_site.xml
 (v) - Edit file `hadoop-env.sh` and locate for the line `export JAVA_HOME=${JAVA_HOME}` and change it with right java home path like in our case it will be `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64` 
 
 ## 7. Format the Hadoop file system
+
 To format the file system run following command. This will initialize the hadoop file system.
 
 ```
@@ -161,3 +172,9 @@ $ jps
 
 * goto `http://ipaddress:8088` to see Main Cluster
 * goto `http://ipaddress:50070` to see detailed status
+ 
+**Credits:**
+* Prof. Anand Nayyar's  [post](https://www.facebook.com/expertresearcher/posts/1630329467227609)
+* Tutorial posted on HadoopWorld [Youtube Channel](https://www.youtube.com/watch?v=YY8QL25KCOg) 
+* Book "Hadoop: The Definitive Guide"
+
