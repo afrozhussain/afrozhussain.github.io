@@ -4,6 +4,7 @@ title: Implementation of Covariance and Correlation function in Python
 subtitle: Let's do some Statistics
 ---
 
+:white_check_mark:
 
 ## Covariance
 
