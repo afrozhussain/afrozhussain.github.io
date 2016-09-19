@@ -160,6 +160,7 @@ To format the file system run following command. This will initialize the hadoop
 ```
 $ hdfs namenode -format
 ```
+
 ## 8. Running 'Single Node' cluster
 
 ```
@@ -174,6 +175,7 @@ $ jps
 * goto `http://ipaddress:50070` to see detailed status
  
 **Credits:**
+
 * Prof. Anand Nayyar's  [post](https://www.facebook.com/expertresearcher/posts/1630329467227609)
 * Tutorial posted on HadoopWorld [Youtube Channel](https://www.youtube.com/watch?v=YY8QL25KCOg) 
 * Book "Hadoop: The Definitive Guide"
