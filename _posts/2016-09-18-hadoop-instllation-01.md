@@ -4,7 +4,6 @@ title: Apache Hadoop Installation (Single Node)
 subtitle: A Step by step tutorial
 ---
 
-You can write regular [markdown](http://markdowntutorial.com/) here and Jekyll will automatically convert it to a nice webpage.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](http://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
 If you are new to Hadoop and getting curious that how to install Hadoop from scratch then this tutorial will help you to understand the setup process. By following these steps you can setup and run your single hadoop cluster. 
 
