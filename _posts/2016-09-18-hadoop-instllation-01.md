@@ -4,6 +4,7 @@ title: Apache Hadoop Installation (Single Node)
 subtitle: A Step by step tutorial
 ---
 
+You can write regular [markdown](http://markdowntutorial.com/) here and Jekyll will automatically convert it to a nice webpage.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](http://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
 If you are new to Hadoop and getting curious that how to install Hadoop from scratch then this tutorial will help you to understand the setup process. By following these steps you can setup and run your single hadoop cluster. 
 
@@ -81,7 +82,12 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 
 ## 6. Hadoop configuration
 
-(i) - Edit File `core-site.xml` and add following content inside `<configuration>` ... `</configuration>` tags
+(i) - Edit File `core-site.xml` by using following command
+
+```
+$ sudo gedit core-site.xml
+```
+and add following content inside `<configuration>` ... `</configuration>` tags
 
 ```
 <property>
@@ -90,7 +96,13 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 </property>
 ```
 
-(ii) - Edit File `hdfs-site.xml` and add following content inside `<configuration>` ...`</configuration>` tags.
+(ii) - Edit File `hdfs-site.xml` by using following command
+
+```
+$ sudo gedit hdfs-site.xml
+```
+
+and add following content inside `<configuration>` ...`</configuration>` tags.
 
 The `hdfs-site.xml` is used to specify the namenode and datanode directories. Before modifying this file, we create the namenode and datanode directories. You can create folder with any name in our case we named it `hadoop_store`.
 
@@ -116,7 +128,14 @@ $ sudo chown -R hduser /usr/local/hadoop_store
         <value> file:/usr/local/hadoop_store/hdfs/datanode </value>
 </property>
 ```
-(iii) - Edit File `yarn-site.xml` and add following content inside `<configuration>` ...`</configuration>` tags.
+(iii) - Edit File `yarn-site.xml` by using following command
+
+```
+$ sudo gedit yarn-site.xml
+```
+
+and add following content inside `<configuration>` ...`</configuration>` tags.
+
 ```
 # linux command to open the file to edit
 $ sudo gedit yarn-site.xml
@@ -133,7 +152,13 @@ $ sudo gedit yarn-site.xml
 </property>
 ```
 
-(iv) - Edit File `mapred-site.xml` and add following content inside `<configuration>` ...`</configuration>` tags.
+(iv) - Edit File `mapred-site.xml` by using following command
+
+```
+$ sudo gedit mapred-site.xml
+```
+
+and add following content inside `<configuration>` ...`</configuration>` tags.
 
 ```
 $ cp mapred-site.xml.template mapred-site.xml
@@ -160,7 +185,6 @@ To format the file system run following command. This will initialize the hadoop
 ```
 $ hdfs namenode -format
 ```
-
 ## 8. Running 'Single Node' cluster
 
 ```
@@ -171,12 +195,13 @@ $ jps
 
 ## 9. See the status on Web Interface
 
-* goto `http://ipaddress:8088` to see Main Cluster
-* goto `http://ipaddress:50070` to see detailed status
+* goto `http://localhost:8088` to see Main Cluster
+* goto `http://localhost:50070` to see detailed status
+* 
  
-**Credits:**
-
+**External Useful Links:**
 * Prof. Anand Nayyar's  [post](https://www.facebook.com/expertresearcher/posts/1630329467227609)
 * Tutorial posted on HadoopWorld [Youtube Channel](https://www.youtube.com/watch?v=YY8QL25KCOg) 
 * Book "Hadoop: The Definitive Guide"
+* [Edureka Hadoop Installation Guide](http://www.edureka.co/app/webroot/img/source_code/gzw/module_1388139836.pdf)
 
