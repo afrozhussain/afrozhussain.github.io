@@ -4,9 +4,6 @@ title: Implementation of Covariance and Correlation function in Python
 subtitle: Let's do some Statistics
 ---
 
-:chart:
-
-
 
 ## Covariance
 
@@ -14,7 +11,7 @@ In probability theory and statistics, covariance is a measure of how much two ra
 Covariance provides a measure of the strength of the correlation between two or more sets of random variates. 
 The covariance for two random variates X and Y, each with sample size N, is defined by the expectation value
 
-:white_check_mark:
+
 
 ```python
 
@@ -48,7 +45,7 @@ The correlation is one of the most common and most useful statistics. A correlat
 
 The most familiar measure of dependence between two quantities is the Pearson product-moment correlation coefficient, or “Pearson’s correlation coefficient”, commonly called simply “the correlation coefficient”. It is obtained by dividing the covariance of the two variables by the product of their standard deviations.
 
-:white_check_mark:
+
 
 ```python
 def cov(x,y):
