@@ -1,0 +1,19 @@
+---
+layout: post
+title: Steps to upload Git Code to Azure DevOps Repository
+subtitle: Step by Step
+---
+
+
+## Azure DevOps
+
+
+- create a repo in Azure DevOps
+- click on "Clone in VSCode"
+- select the local directory
+- git remote add origin "https://xxxx.azure.com/repos-name"
+- git add remote 
+- git add --all or git add -A
+- git status
+- git commit -m "Code details"
+- git push origin
